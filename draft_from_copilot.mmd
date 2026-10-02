@@ -1,0 +1,42 @@
+%% First draft: spec only, no reference file, no constraints. Kept for comparison.
+classDiagram
+  class Customer {
+    +String name
+    +String email
+    +String password
+    +list purchase_history
+    +login()
+    +register()
+  }
+  class MenuItem {
+    +String name
+    +float price
+    +String category
+  }
+  class Menu {
+    +list items
+    +filter_by_category(category)
+  }
+  class Order {
+    +list items
+    +String status
+    +calculate_total()
+    +checkout()
+  }
+  class Restaurant {
+    +String name
+    +Menu menu
+  }
+  class Payment {
+    +float amount
+    +String method
+    +process()
+  }
+  class Recommendation {
+    +suggest(customer)
+  }
+  Customer <|-- Order
+  Restaurant --> Menu
+  Menu --> MenuItem
+  Order --> Payment
+  Customer --> Recommendation
